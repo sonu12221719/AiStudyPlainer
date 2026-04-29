@@ -1,0 +1,225 @@
+<div class="relative flex flex-col flex-1 bg-cyan-50 h-screen overflow-auto">
+  <!-- Nav -->
+  <nav class="flex items-center justify-between px-10 py-8">
+    <div>
+      <h1 class="text-3xl font-bold text-gray-900">My Study Plans</h1>
+      <p class="text-sm text-gray-500 mt-1">Manage and track your study schedules</p>
+    </div>
+    <div class="flex items-center gap-3">
+      <button
+        class="px-6 py-4 text-sm border border-gray-300 rounded-lg hover:bg-gray-50 transition-all duration-200 cursor-pointer"
+        (click)="openPreset()"
+      >
+        Generate Plan
+      </button>
+      <button
+        (click)="openUploadMaterial()"
+        class="px-6 py-4 text-sm bg-cyan-900 text-white rounded-lg hover:bg-cyan-800 transition-all duration-200 cursor-pointer"
+      >
+        Upload Material
+      </button>
+    </div>
+  </nav>
+
+  <!-- Overlay -->
+  @if (usePresetDisplay()) {
+    <div
+      class="absolute inset-0 z-10 flex items-center justify-center bg-black/40 backdrop-blur-sm"
+      (click)="openPreset()"
+    >
+      <!-- Modal -->
+      <div
+        class="bg-white rounded-2xl shadow-xl p-8 w-full max-w-lg"
+        (click)="$event.stopPropagation()"
+      >
+        <h2 class="text-xl font-bold text-gray-900 mb-1">Use a Preset</h2>
+        <p class="text-sm text-gray-500 mb-6">Fill in the details to generate your study plan</p>
+
+        <form class="flex flex-col gap-5" (submit)="generatePlan()">
+          <!-- Exam Name -->
+          <div class="flex flex-col gap-1.5">
+            <label class="text-sm font-semibold text-gray-700">Exam Name</label>
+            <div
+              class="flex items-center border-2 border-blue-300 rounded-lg px-3 py-2 gap-2 focus-within:border-cyan-500 focus-within:ring-1 focus-within:ring-cyan-500 transition"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#9ca3af"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M12 20h9" />
+                <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4Z" />
+              </svg>
+              <input
+                [(ngModel)]="examName"
+                name="examName"
+                type="text"
+                placeholder="e.g. JEE Mains, UPSC, SAT"
+                class="flex-1 outline-none text-sm text-gray-800 placeholder-gray-400 bg-transparent"
+              />
+            </div>
+          </div>
+
+          <!-- Start & End Date -->
+          <div class="flex gap-4">
+            <div class="flex flex-col gap-1.5 flex-1">
+              <label class="text-sm font-semibold text-gray-700">Start Date</label>
+              <div
+                class="flex items-center border-2 border-blue-300 rounded-lg px-3 py-2 gap-2 focus-within:border-cyan-500 focus-within:ring-1 focus-within:ring-cyan-500 transition"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#9ca3af"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <rect width="18" height="18" x="3" y="4" rx="2" />
+                  <path d="M16 2v4M8 2v4M3 10h18" />
+                </svg>
+                <input
+                    [(ngModel)]="startDate"
+                    name="startDate"
+                    type="date"
+                    class="flex-1 outline-none text-sm text-gray-800 placeholder-gray-400 bg-transparent"
+                />
+              </div>
+            </div>
+
+            <div class="flex flex-col gap-1.5 flex-1">
+              <label class="text-sm font-semibold text-gray-700">End Date</label>
+              <div
+                class="flex items-center border-2 border-blue-300 rounded-lg px-3 py-2 gap-2 focus-within:border-cyan-500 focus-within:ring-1 focus-within:ring-cyan-500 transition"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#9ca3af"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <rect width="18" height="18" x="3" y="4" rx="2" />
+                  <path d="M16 2v4M8 2v4M3 10h18" />
+                </svg>
+                <input
+                    [(ngModel)]="endDate"
+                    name="endDate"
+                    type="date"
+                    class="flex-1 outline-none text-sm text-gray-800 placeholder-gray-400 bg-transparent"
+                />
+              </div>
+            </div>
+          </div>
+
+          <!-- Daily Study Hours -->
+          <div class="flex flex-col gap-1.5">
+            <label class="text-sm font-semibold text-gray-700">Daily Study Hours</label>
+            <div
+              class="flex items-center border-2 border-blue-300 rounded-lg px-3 py-2 gap-2 focus-within:border-cyan-500 focus-within:ring-1 focus-within:ring-cyan-500 transition"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#9ca3af"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <circle cx="12" cy="12" r="10" />
+                <polyline points="12 6 12 12 16 14" />
+              </svg>
+              <input
+                [(ngModel)]="dailyStudyHours"
+                name="dailyStudyHours"
+                type="number"
+                min="1"
+                max="24"
+                placeholder="e.g. 4"
+                class="flex-1 outline-none text-sm text-gray-800 placeholder-gray-400 bg-transparent"
+              />
+              <span class="text-xs text-gray-400">hrs/day</span>
+            </div>
+          </div>
+
+          <!-- Focus Subjects -->
+          <div class="flex flex-col gap-1.5">
+            <label class="text-sm font-semibold text-gray-700">Focus Subjects</label>
+            <div
+              class="flex items-center border-2 border-blue-300 rounded-lg px-3 py-2 gap-2 focus-within:border-cyan-500 focus-within:ring-1 focus-within:ring-cyan-500 transition"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#9ca3af"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
+                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
+              </svg>
+              <input
+                [(ngModel)]="focusSubjects"
+                name="focusSubjects"
+                type="text"
+                placeholder="e.g. Physics, Maths, Chemistry (comma separated)"
+                class="flex-1 outline-none text-sm text-gray-800 placeholder-gray-400 bg-transparent"
+              />
+            </div>
+            <p class="text-xs text-gray-400 ml-1">Separate multiple subjects with commas</p>
+          </div>
+
+          <!-- Actions -->
+          <div class="flex justify-end gap-3 mt-2">
+            <button
+              type="button"
+              class="px-5 py-2.5 text-sm border border-gray-300 rounded-lg hover:bg-gray-50 cursor-pointer transition"
+              (click)="closePreset()"
+            >
+              Cancel
+            </button>
+            <button
+              type="submit"
+              class="px-5 py-2.5 text-sm bg-cyan-900 text-white rounded-lg hover:bg-cyan-800 cursor-pointer transition"
+            >
+              Generate Plan
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  }
+
+  <!-- Overlay for upload Material -->
+   @if(useUploadDisplay()){
+    <div class="absolute inset-0 z-10 flex items-center justify-center bg-black/40 backdrop-blur-sm">
+        <div class="bg-white rounded-2xl shadow-xl p-8 w-full max-w-lg">
+            <h2 class="text-xl font-bold text-gray-900 mb-1">Upload Study Material</h2>
+            <p class="text-sm text-gray-500 mb-6">Upload your study material to generate a personalized plan</p>
+    
+            <!-- Upload Form -->
+            
+        </div>
+    </div>
+   }
+</div>

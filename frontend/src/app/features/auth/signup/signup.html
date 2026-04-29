@@ -1,0 +1,194 @@
+<div class="h-screen flex">
+
+    <!-- Left side -->
+    <div class="register-left bg-blue-500 w-1/2 flex flex-col justify-center items-start px-20">
+        <div class="">
+            <div class="auth-left-logo flex text-white gap-2 items-center mb-6">
+                <span class="logo-icon bg-[rgba(255,255,255,0.2)] p-2 rounded-lg">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" width="26" height="26">
+                        <path d="M12 3L22 8.5V10H20V18H18V10.9L12 14L2 8.5L12 3Z" fill="currentColor"/>
+                        <path d="M6 11.5V17.5C6 18.9 8.69 20 12 20C15.31 20 18 18.9 18 17.5V11.5L12 14.94L6 11.5Z" fill="currentColor" opacity="0.55"/>
+                    </svg>
+                </span>
+                <h1 class="font-bold text-xl">AI Study Planner</h1>
+            </div>
+            <div class="min-h-[44px] mb-4 overflow-hidden">
+                <p class="text-white text-4xl font-bold leading-tight">
+                    <span>Start your</span><br>
+                    <span>learning journey.</span>
+                </p>
+            </div>
+            <div class="mb-8">
+                <p class="text-white/80 text-sm leading-relaxed">
+                    Join students who use AI-powered planning to study more effectively and ace their exams.
+                </p>
+            </div>
+            <div class="flex gap-3">
+                <div class="flex flex-col items-center border-b border-b-blue-600 text-white bg-[rgba(255,255,255,0.15)] p-4 rounded-lg">
+                    <h1 class="font-extrabold">2X</h1>
+                    <p class="text-gray-300 text-sm">Fast revision</p>
+                </div>
+                <div class="flex flex-col items-center border-b border-b-blue-600 text-white bg-[rgba(255,255,255,0.15)] p-4 rounded-lg">
+                    <h1 class="font-extrabold">AI</h1>
+                    <p class="text-gray-300 text-sm">Personalized</p>
+                </div>
+                <div class="flex flex-col items-center border-b border-b-blue-600 text-white bg-[rgba(255,255,255,0.15)] p-4 rounded-lg">
+                    <h1 class="font-extrabold">Free</h1>
+                    <p class="text-gray-300 text-sm">To get started</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Right side — overflow-y-auto added -->
+    <div class="register-right bg-[#F4F0FF] w-1/2 flex justify-center items-center overflow-y-auto">
+        <div class="form-card w-full max-w-md px-10 py-6 my-auto">
+
+            <!-- Heading -->
+            <div class="heading-card mb-4">
+                <h2 class="font-bold text-3xl text-gray-800 mb-1">Create account</h2>
+                <p class="text-gray-400 text-md">Start your AI-powered study journey today</p>
+            </div>
+
+            <form class="flex flex-col gap-3">
+
+                <!-- Full Name -->
+                <div class="flex flex-col gap-1">
+                    <label for="FullName" class="text-sm font-semibold text-gray-700">Full Name</label>
+                    <div class="flex items-center border-2 border-blue-300 rounded-lg px-3 py-2 gap-2 focus-within:border-blue-500 focus-within:ring-1 focus-within:ring-blue-500 transition">
+                        <input
+                            [(ngModel)]="fullName"
+                            type="text"
+                            id="FullName"
+                            name="fullName"
+                            placeholder="Enter your full name"
+                            class="flex-1 outline-none text-sm text-gray-800 placeholder-gray-400 bg-transparent"
+                        />
+                    </div>
+                </div>
+
+                <!-- Email -->
+                <div class="flex flex-col gap-1">
+                    <label for="Email" class="text-sm font-semibold text-gray-700">Email</label>
+                    <div class="flex items-center border-2 border-blue-300 rounded-lg px-3 py-2 gap-2 focus-within:border-blue-500 focus-within:ring-1 focus-within:ring-blue-500 transition">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#9ca3af" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect width="20" height="16" x="2" y="4" rx="2"/>
+                            <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+                        </svg>
+                        <input
+                            [(ngModel)]="email"
+                            type="email"
+                            id="Email"
+                            name="email"
+                            placeholder="learner@gmail.com"
+                            class="flex-1 outline-none text-sm text-gray-800 placeholder-gray-400 bg-transparent"
+                        />
+                    </div>
+                </div>
+
+                <!-- Password + Confirm side by side -->
+                <div class="flex gap-3 items-end">
+                    <div class="flex flex-col gap-1 flex-1 min-w-0">
+                        <label for="password" class="text-sm font-semibold text-gray-700">Password</label>
+                        <div class="flex items-center border-2 border-blue-300 rounded-lg px-3 py-2 gap-2 focus-within:border-blue-500 focus-within:ring-1 focus-within:ring-blue-500 transition">
+                            <input
+                                [(ngModel)]="password"
+                                type="password"
+                                id="password"
+                                name="password"
+                                placeholder="Enter password"
+                                class="flex-1 outline-none text-sm text-gray-800 placeholder-gray-400 bg-transparent w-0"
+                            />
+                        </div>
+                    </div>
+                    <div class="flex flex-col gap-1 flex-1 min-w-0">
+                        <label for="confirmPassword" class="text-sm font-semibold text-gray-700">Confirm Password</label>
+                        <div class="flex items-center border-2 border-blue-300 rounded-lg px-3 py-2 gap-2 focus-within:border-blue-500 focus-within:ring-1 focus-within:ring-blue-500 transition">
+                            <input
+                                [(ngModel)]="confirmPassword"
+                                type="password"
+                                id="confirmPassword"
+                                name="confirmPassword"
+                                placeholder="Confirm password"
+                                class="flex-1 outline-none text-sm text-gray-800 placeholder-gray-400 bg-transparent w-0"
+                            />
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Examination -->
+                <div class="flex flex-col gap-1">
+                    <label for="Exam" class="text-sm font-semibold text-gray-700">Examination</label>
+                    <div class="flex items-center border-2 border-blue-300 rounded-lg px-3 py-2 gap-2 focus-within:border-blue-500 focus-within:ring-1 focus-within:ring-blue-500 transition">
+                        <input
+                            [(ngModel)]="exam"
+                            type="text"
+                            id="Exam"
+                            name="Exam"
+                            placeholder="Enter your exam name"
+                            class="flex-1 outline-none text-sm text-gray-800 placeholder-gray-400 bg-transparent"
+                        />
+                    </div>
+                </div>
+
+                <!-- Exam Date + Study Hours side by side -->
+                <div class="flex gap-3">
+                    <div class="flex flex-col gap-1 flex-1">
+                        <label for="examDate" class="text-sm font-semibold text-gray-700">Exam Date</label>
+                        <div class="flex items-center border-2 border-blue-300 rounded-lg px-3 py-2 gap-2 focus-within:border-blue-500 focus-within:ring-1 focus-within:ring-blue-500 transition">
+                            <input
+                                [(ngModel)]="examDate"
+                                type="datetime-local"
+                                id="examDate"
+                                name="examDate"
+                                class="flex-1 outline-none text-sm text-gray-800 placeholder-gray-400 bg-transparent"
+                            />
+                        </div>
+                    </div>
+                    <div class="flex flex-col gap-1 flex-1">
+                        <label for="dailyStudyHours" class="text-sm font-semibold text-gray-700">Daily Study Hours</label>
+                        <div class="flex items-center border-2 border-blue-300 rounded-lg px-3 py-2 gap-2 focus-within:border-blue-500 focus-within:ring-1 focus-within:ring-blue-500 transition">
+                            <input
+                                [(ngModel)]="dailyStudyHours"
+                                type="number"
+                                id="dailyStudyHours"
+                                name="dailyStudyHours"
+                                placeholder="hours"
+                                min="1"
+                                max="24"
+                                class="flex-1 outline-none text-sm text-gray-800 placeholder-gray-400 bg-transparent"
+                            />
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Submit button -->
+                <button
+                    (click)="onsubmit()"
+                    type="submit"
+                    class="w-full bg-blue-600 hover:bg-blue-700 disabled:opacity-60 disabled:cursor-not-allowed text-white font-semibold py-2.5 rounded-lg transition text-sm mt-1 cursor-pointer">
+                    @if(loading()) {
+                        <span class="flex items-center justify-center gap-2">
+                            <svg class="animate-spin" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                                stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 12a9 9 0 1 1-6.219-8.56"/>
+                            </svg>
+                            Creating account...
+                        </span>
+                    }
+                    @else {
+                        Create account
+                    }
+                </button>
+
+            </form>
+
+            <!-- Footer -->
+            <p class="text-center text-sm text-gray-400 mt-4">
+                Already have an account?
+                <a href="/login" class="text-blue-500 font-medium hover:underline">Login</a>
+            </p>
+
+        </div>
+    </div>
+</div>
