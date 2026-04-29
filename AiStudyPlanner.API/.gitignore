@@ -1,0 +1,65 @@
+# ASP.NET Core .gitignore
+
+## Build outputs
+bin/
+obj/
+
+## User-specific files
+*.user
+*.userosscache
+*.suo
+*.userprefs
+
+## Visual Studio / Rider
+.vs/
+.idea/
+*.sln.docstates
+
+## NuGet
+*.nupkg
+*.snupkg
+packages/
+!**/packages/build/
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+## ASP.NET Core
+appsettings.Development.json
+appsettings.Local.json
+wwwroot/lib/
+
+## Entity Framework
+*.mdf
+*.ldf
+Migrations/
+
+## Publishing
+**/publish/
+**/PublishProfiles/
+
+## Logs & temp
+logs/
+*.log
+*.tmp
+*.temp
+npm-debug.log*
+
+## Environment & secrets
+.env
+.env.*
+*.pfx
+secrets.json
+
+## Node / frontend
+node_modules/
+dist/
+.npm/
+
+## OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+## Docker
+docker-compose.override.yml
